@@ -15,8 +15,8 @@
         <script>
             var canvas = document.getElementById("tela");
             var tela = canvas.getContext("2d");
-			var xTela = 400;
-			var yTela = 250;
+			var xTela = 300;
+			var yTela = 180;
 			var fps = 60;
 			var velX = 3;
 			var velY = 5;
@@ -61,12 +61,12 @@
 			
 			}
 			function desenhaQuadrado(x, y){
-				tela.fillStyle = "rgb(0,0,100)";
+				tela.fillStyle = "rgb(0,0,150)";
 				tela.fillRect(x, y, 20, 20);			
 			
 			}	
             function limpaTela(){
-				tela.fillStyle = "rgb(255,0,0)";
+				tela.fillStyle = "rgb(0,255,0)";
 				tela.fillRect(0, 0, xTela, yTela);
 			}			
 			
