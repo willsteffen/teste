@@ -4,7 +4,10 @@
         <title>Teste1</title>
 		<style>
 		.grande{
-		font-size: 70px;
+		font-size: 20px;
+		}
+		#form{
+		text-align: center;
 		}
 		</style>
     </head>
@@ -72,12 +75,12 @@
 			
 			function centralizaTela(xTela, yTela){
 				var margemLeft = "-" + xTela/2 + "px";
-				var margemTop = "-" + yTela/2 + "px";
+				var margemTop = "-" + yTela + "px";
 				canvas.style.marginLeft = margemLeft;
 				canvas.style.marginTop = margemTop;
 				canvas.style.position = "absolute";
 				canvas.style.left = "50%";
-				canvas.style.top = "50%";
+				canvas.style.top = "100%";
 				canvas.style.border = "5px solid #d0d0d0";				
 			}
 			
@@ -91,10 +94,10 @@
 			}
 		</script>
 		<form id="form">
-		Velocidade Horizontal:
+		Horizontal:
 		<input type="button" onclick="mudaVelX(1)" value="+" class="grande"></input>
-		<input type="button" onclick="mudaVelX(-1)" value="-" class="grande"></input><br><br>
-		Velocidade Vertical:
+		<input type="button" onclick="mudaVelX(-1)" value="-" class="grande"></input>
+		Vertical:
 		<input type="button" onclick="mudaVelY(1)" value="+" class="grande"></input>
 		<input type="button" onclick="mudaVelY(-1)" value="-" class="grande"></input>
 		</form>
