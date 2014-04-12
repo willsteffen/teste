@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Teste1</title>
+		<style>
+		.grande{
+		font-size: 70px;
+		}
+		</style>
+    </head>
+    <body style="background:#aaaaaa;">
+
+        <canvas id="tela">Sem suporte ao HTML5</canvas>
+
+        <script>
+            var canvas = document.getElementById("tela");
+            var tela = canvas.getContext("2d");
+			var xTela = 805;
+			var yTela = 535;
+			var fps = 60;
+			var velX = 0;
+			var velY = 0;
+			canvas.width = xTela;
+			canvas.height = yTela;
+			centralizaTela(xTela, yTela);
+
+			
+			var game = window.setInterval('gameLoop()',(1000/fps))
+			
+			var quad = {
+			'x': 0,
+			'y': 0			
+			};
+			
+			var xpos = 300;
+			var ypos = 200;
+			
+			var desce = true;
+			var direita = true;
+			function gameLoop(){
+				limpaTela();
+				
+				
+				desenhaQuadrado(quad.x, quad.y);
+				
+				if(direita){xpos=xpos+velX;}
+				else{xpos=xpos-velX;}
+				
+				if(desce){ypos=ypos+velY;}
+				else{ypos=ypos-velY;}	
+					
+				if(xpos>(xTela - 21)){direita = false;}
+				if(xpos<(1)){direita = true;}
+				
+				if(ypos>(yTela - 21)){desce = false;}
+				if(ypos<(1)){desce = true;}	
+					
+				quad.x = xpos;
+				quad.y = ypos;
+
+			
+			}
+			function desenhaQuadrado(x, y){
+				tela.fillStyle = "rgb(0,0,100)";
+				tela.fillRect(x, y, 20, 20);			
+			
+			}	
+            function limpaTela(){
+				tela.fillStyle = "rgb(255,0,0)";
+				tela.fillRect(0, 0, xTela, yTela);
+			}			
+			
+			function centralizaTela(xTela, yTela){
+				var margemLeft = "-" + xTela/2 + "px";
+				var margemTop = "-" + yTela/2 + "px";
+				canvas.style.marginLeft = margemLeft;
+				canvas.style.marginTop = margemTop;
+				canvas.style.position = "absolute";
+				canvas.style.left = "50%";
+				canvas.style.top = "50%";
+				canvas.style.border = "5px solid #d0d0d0";				
+			}
+			
+			function mudaVelX(novaVel){
+			velX = velX + novaVel;
+			if(velX < 0){velX = 0;}
+			}
+			function mudaVelY(novaVel){
+			velY = velY+novaVel;
+			if(velY < 0){velY = 0;}
+			}
+		</script>
+		<form id="form">
+		Velocidade Horizontal:
+		<input type="button" onclick="mudaVelX(1)" value="+" class="grande"></input>
+		<input type="button" onclick="mudaVelX(-1)" value="-" class="grande"></input><br><br>
+		Velocidade Vertical:
+		<input type="button" onclick="mudaVelY(1)" value="+" class="grande"></input>
+		<input type="button" onclick="mudaVelY(-1)" value="-" class="grande"></input>
+		</form>
+	</body>
+</html>	
+			
